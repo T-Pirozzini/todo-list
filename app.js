@@ -24,16 +24,14 @@ todos.push(createTodo('Feed Uno', 'Our furry friend gets feral when hungry', 'Ju
 
 // Remove todo
 const removeTodo = (e) => {
-  e.currentTarget.parentNode.remove()
+  e.currentTarget.parentElement.parentElement.remove()
 }
 // Complete todo
 const completeTodo = (e) => {
   const complete = document.querySelector('.completed-container')  
-  e.currentTarget.classList.add('completed')
-  console.log(e.target.value)
-  console.log(e.currentTarget.value)
-  console.log(e.currentTarget.parentNode)
-  complete.appendChild(e.currentTarget.parentNode)
+  e.currentTarget.classList.add('completed')  
+  complete.appendChild(e.currentTarget.parentElement.parentElement)
+  e.currentTarget.innerHTML = null
 }
 
 // add a new todo to todos array
@@ -66,19 +64,23 @@ const addTodo = (e) => {
   const priorityLi = document.createElement('li')
   const complete = document.createElement('span')
   const remove = document.createElement('span')
+  const div = document.createElement('div')
   
   // add values to elements
   titleLi.textContent = "Title: " + currentTodo.title
   descriptionLi.textContent = "Description: " + currentTodo.description
   duedateLi.textContent = "Deadline: " + currentTodo.dueDate   
   priorityLi.textContent = `Priority: ${currentTodo.priority}`
+  div.classList.add('update')
 
+  //completed task button
   complete.textContent = "check_circle"
   complete.classList.add('material-symbols-outlined', 'complete')
   complete.addEventListener("click", (e) => {
     completeTodo(e)
   })
 
+  //remove task button
   remove.textContent = "delete"
   remove.classList.add('material-symbols-outlined', 'remove')
   remove.addEventListener("click", (e) => {
@@ -90,8 +92,9 @@ const addTodo = (e) => {
   ul.appendChild(descriptionLi)
   ul.appendChild(duedateLi)
   ul.appendChild(priorityLi)
-  ul.appendChild(complete)
-  ul.appendChild(remove)
+  div.appendChild(complete)
+  div.appendChild(remove)
+  ul.appendChild(div)  
   list.appendChild(ul)
 
   // reset the form

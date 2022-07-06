@@ -35,7 +35,7 @@ h1 {
 }
 ul {  
   background-color: white;
-  width: 250px;
+  width: 350px;
   margin: 10px;
   padding: 10px;  
   border-radius: 6px;
@@ -67,6 +67,10 @@ button:hover {
   cursor: pointer;
   background: black;
   color: white;
+}
+.update {
+  display: flex;
+  justify-content: flex-end;  
 }
 
 .complete:hover {
