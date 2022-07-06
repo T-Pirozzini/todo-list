@@ -1,9 +1,10 @@
 // query/id selectors
 const title = document.getElementById('title')
 const inputBtn = document.querySelector('.input-btn')
-const todoList = document.querySelector('.todo-list')
+const list = document.querySelector('.list')
+// const todoList = document.querySelector('.todo-list')
 const form = document.querySelector('form')
-console.log(todoList)
+// console.log(todoList)
 
 // todo constructor
 const createTodo = (title, description, dueDate, priority) => {
@@ -24,26 +25,35 @@ todos.push(createTodo('Feed Uno', 'Our furry friend gets feral when hungry', 'Ju
 // add a new todo to todos array
 const addTodo = (e) => {
   e.preventDefault()
-  // todos.push(createTodo(title.value, description.value, duedate.value, priority.value))
 
+  // push to todos array - not necessary, but might be useful later
+  todos.push(createTodo(title.value, description.value, duedate.value, priority.value))
+  console.log(todos)
+
+  // create current todo
   let currentTodo = createTodo(title.value, description.value, duedate.value, priority.value)
 
+  // create required elements
   let ul = document.createElement('ul')
   let titleLi = document.createElement('li')
   let descriptionLi = document.createElement('li')
   let duedateLi = document.createElement('li')
   let priorityLi = document.createElement('li')
   
+  // add values to elements
   titleLi.textContent = "Title: " + currentTodo.title
   descriptionLi.textContent = "Description: " + currentTodo.description
-  duedateLi.textContent = "Duedate: " + currentTodo.dueDate
-  priorityLi.textContent = "Priority: " + currentTodo.priority
+  duedateLi.textContent = "Duedate: " + currentTodo.dueDate   
+  priorityLi.textContent = `Priority: ${currentTodo.priority}`  
 
+  // append elements to ul
   ul.appendChild(titleLi)
   ul.appendChild(descriptionLi)
   ul.appendChild(duedateLi)
   ul.appendChild(priorityLi)
-  todoList.appendChild(ul)
+  list.appendChild(ul)
+
+  // reset the form
   form.reset();  
 }
 
