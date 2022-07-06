@@ -2,9 +2,7 @@
 const title = document.getElementById('title')
 const inputBtn = document.querySelector('.input-btn')
 const list = document.querySelector('.list')
-// const todoList = document.querySelector('.todo-list')
 const form = document.querySelector('form')
-// console.log(todoList)
 
 // todo constructor
 const createTodo = (title, description, dueDate, priority) => {
@@ -50,8 +48,7 @@ const addTodo = (e) => {
   }
   
   // push to todos array - not necessary, but might be useful later
-  todos.push(createTodo(title.value, description.value, duedate.value, priorityText))
-  console.log(todos)  
+  todos.push(createTodo(title.value, description.value, duedate.value, priorityText))  
   
   // create current todo
   const currentTodo = createTodo(title.value, description.value, duedate.value, priorityText)
