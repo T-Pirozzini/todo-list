@@ -22,35 +22,76 @@ let todos = []
 // Add a test todo
 todos.push(createTodo('Feed Uno', 'Our furry friend gets feral when hungry', 'July 1, 2022', 'high'))
 
+// Remove todo
+const removeTodo = (e) => {
+  e.currentTarget.parentNode.remove()
+}
+// Complete todo
+const completeTodo = (e) => {
+  const complete = document.querySelector('.completed-container')  
+  e.currentTarget.classList.add('completed')
+  console.log(e.target.value)
+  console.log(e.currentTarget.value)
+  console.log(e.currentTarget.parentNode)
+  complete.appendChild(e.currentTarget.parentNode)
+}
+
 // add a new todo to todos array
 const addTodo = (e) => {
-  e.preventDefault()
+  e.preventDefault() 
 
+  let priorityText = ""
+  if (priority.value == 1) {
+    priorityText = "low" 
+  }
+  if (priority.value == 2) {
+    priorityText = "medium" 
+  }
+  if (priority.value == 3) {
+    priorityText = "high" 
+  }
+  
   // push to todos array - not necessary, but might be useful later
-  todos.push(createTodo(title.value, description.value, duedate.value, priority.value))
-  console.log(todos)
-
+  todos.push(createTodo(title.value, description.value, duedate.value, priorityText))
+  console.log(todos)  
+  
   // create current todo
-  let currentTodo = createTodo(title.value, description.value, duedate.value, priority.value)
+  const currentTodo = createTodo(title.value, description.value, duedate.value, priorityText)
 
   // create required elements
-  let ul = document.createElement('ul')
-  let titleLi = document.createElement('li')
-  let descriptionLi = document.createElement('li')
-  let duedateLi = document.createElement('li')
-  let priorityLi = document.createElement('li')
+  const ul = document.createElement('ul')
+  const titleLi = document.createElement('li')
+  const descriptionLi = document.createElement('li')
+  const duedateLi = document.createElement('li')
+  const priorityLi = document.createElement('li')
+  const complete = document.createElement('span')
+  const remove = document.createElement('span')
   
   // add values to elements
   titleLi.textContent = "Title: " + currentTodo.title
   descriptionLi.textContent = "Description: " + currentTodo.description
-  duedateLi.textContent = "Duedate: " + currentTodo.dueDate   
-  priorityLi.textContent = `Priority: ${currentTodo.priority}`  
+  duedateLi.textContent = "Deadline: " + currentTodo.dueDate   
+  priorityLi.textContent = `Priority: ${currentTodo.priority}`
+
+  complete.textContent = "check_circle"
+  complete.classList.add('material-symbols-outlined', 'complete')
+  complete.addEventListener("click", (e) => {
+    completeTodo(e)
+  })
+
+  remove.textContent = "delete"
+  remove.classList.add('material-symbols-outlined', 'remove')
+  remove.addEventListener("click", (e) => {
+    removeTodo(e)
+  })
 
   // append elements to ul
   ul.appendChild(titleLi)
   ul.appendChild(descriptionLi)
   ul.appendChild(duedateLi)
   ul.appendChild(priorityLi)
+  ul.appendChild(complete)
+  ul.appendChild(remove)
   list.appendChild(ul)
 
   // reset the form
@@ -61,6 +102,9 @@ const addTodo = (e) => {
 inputBtn.addEventListener('click', (e) => {
   addTodo(e)  
 })
+
+
+
 
 
  

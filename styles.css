@@ -1,27 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 body {
   box-sizing: border-box;
   background-color: aliceblue;
+  font-family: 'Roboto', sans-serif;
 }
-
+header {
+  display: flex;
+  justify-content: center;
+}
+h1 {
+  border: 2px solid black;
+  border-radius: 4px;
+  width: 300px;
+  text-align: center;
+}
 .list-container {
-  
+  display: flex;
+  flex-direction: column;
 }
-
-.list {  
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr; 
+.list {    
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  background: aquamarine;
+  border-radius: 6px;
 }
-
-ul {
-  background-color: aquamarine;
+.completed-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  background: white;
+  border-radius: 6px;
+}
+ul {  
+  background-color: white;
+  width: 250px;
   margin: 10px;
   padding: 10px;  
   border-radius: 6px;
   box-shadow: 2px 2px 2px 2px green;
   list-style: none;
-}
-li {
-  
 }
 .input-container {
   display: flex;
@@ -38,8 +57,21 @@ label {
 }
 button {
   width: 100px;
+  align-self: center;
+  margin: 10px;
+  border: 2px solid black;
+  border-radius: 6px;
+  background: white;
+}
+button:hover {
+  cursor: pointer;
+  background: black;
+  color: white;
 }
 
-.span {
+.complete:hover {
+  color: rgb(8, 191, 8);  
+}
+.remove:hover {
   color: red;
 }

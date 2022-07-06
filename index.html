@@ -5,29 +5,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To Do List</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="list-container">
+  <header class="header">
     <h1>To Do List:</h1>
-  </div> 
-    <div class="list">
-
-      
-      <div class="input-container">
-        <form>
-          <label for="title">Title:</label>
-          <input id="title" />
-          <label for="description">Description:</label>
-          <input id="description" />
-          <label for="duedate">Due Date:</label>
-          <input id="duedate" />
-          <label for="priority">Priority:</label>
-          <input id="priority" />
-          <button class="input-btn">Submit</button> 
-        </form>     
-      </div>
-    </div>
+  </header>
+  
+  <div class="input-container">
+    <form>
+      <label for="title">Title:</label>
+      <input id="title" />
+      <label for="description">Description:</label>
+      <input id="description" />
+      <label for="duedate">Deadline:</label>
+      <input type="date" id="duedate" />
+      <label for="priority">Priority:</label>
+      <input type="range" id="priority" min="1" max="3" />
+      <button class="input-btn">Submit</button> 
+    </form>     
+  </div>
+  <div class="list-container">
+    <div class="list"></div>      
+    <div class="completed-container"></div>
+  </div>
   
     
   <script src="app.js"></script>
